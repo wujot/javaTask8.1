@@ -6,19 +6,28 @@ public class HumanTest {
 
         // create array of 3 human elements
         Human[] humans = new Human[3];
-        humans[0] = new Human();
-        humans[1] = new Human();
-        humans[2] = new Human();
+        humans[0] = null;
+        humans[1] = null;
+        humans[2] = null;
 
         Scanner sc = new Scanner(System.in);
 
-        // prompt user to fill in array with details
         do {
             for (int i = 0; i < humans.length; i++) {
-                System.out.println("Give a name of the human: ");
-                humans[i].setName(sc.nextLine());
-                System.out.println("Give an age of the human: ");
-                humans[i].setAge(Integer.parseInt(sc.nextLine()));
+                Human temp = new Human();
+            System.out.println("Give a name of the human: ");
+            temp.setName(sc.nextLine());
+            System.out.println("Give an age of the human: ");
+            temp.setAge(Integer.parseInt(sc.nextLine()));
+                for (int j = 0; j < humans.length; j++) {
+                    if (temp.equals(humans[j])) {
+                        System.out.println("Object already exist.");
+                        break;
+                    } else {
+                        humans[i] = temp;
+                        break;
+                    }
+                }
             }
         }while (arrayIsEmpty(humans));
     }
